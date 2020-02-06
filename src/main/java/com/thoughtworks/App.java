@@ -45,6 +45,18 @@ public class App {
     return itemCount;
   }
 
+  public static String[] getSelectedItemName(int[] itemIndex) {
+    String[] itemNames = getItemNames();
+    String[] itemName = new String[itemIndex.length];
+    for (int i = 0; i < itemIndex.length; i++) {
+      for (int j = 0; j < itemNames.length; j++) {
+        if (itemIndex[i] == j) {
+          itemName[i] = itemNames[j];
+        }
+      }
+    }
+    return itemName;
+  }
 
 
 
