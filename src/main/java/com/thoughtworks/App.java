@@ -1,5 +1,7 @@
 package com.thoughtworks;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
@@ -19,8 +21,9 @@ public class App {
    */
   public static String bestCharge(String selectedItems) {
     // 此处补全代码
-    return selectedItems;
+    return null;
   }
+
 
   /**
    * 获取每个菜品依次的编号
