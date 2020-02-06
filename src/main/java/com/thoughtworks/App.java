@@ -58,6 +58,21 @@ public class App {
     return itemName;
   }
 
+  public static double[] getSelectedItemPrice(int[] itemIndex) {
+    double[] itemPrices = getItemPrices();
+    double[] price = new double[itemIndex.length];
+    for (int i = 0; i < itemPrices.length; i++) {
+      for (int j = 0; j < itemIndex.length; j++) {
+        if (itemIndex[j] == i) {
+          price[j] = itemPrices[i];
+        }
+      }
+    }
+    return price;
+  }
+
+
+
 
 
   /**
