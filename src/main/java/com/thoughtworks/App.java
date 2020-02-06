@@ -21,6 +21,13 @@ public class App {
    */
   public static String bestCharge(String selectedItems) {
     // 此处补全代码
+    String[] items = selectedItems.split(",");
+    int[] itemIndex = getSelectedItemIndex(items);
+    int[] itemCount = getSelectedItemCount(items);
+    String[] itemName = getSelectedItemName(itemIndex);
+    double[] itemPrice = getSelectedItemPrice(itemIndex);
+    double[] singleItemTotal = getSingleTotalPrice(itemPrice, itemCount);
+    String receipt = printReceipt(items, itemName, itemCount, singleItemTotal);
     return receipt;
   }
 
