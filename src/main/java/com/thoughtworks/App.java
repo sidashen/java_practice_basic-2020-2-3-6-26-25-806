@@ -21,10 +21,23 @@ public class App {
    */
   public static String bestCharge(String selectedItems) {
     // 此处补全代码
-    return null;
+    return receipt;
   }
 
+  public static int[] getSelectedItemIndex(String[] items) {
+    String[] itemIds = getItemIds();
+    int[] itemIndex = new int[items.length];
+    for (int i = 0; i < items.length; i++) {
+      for (int j = 0; j < itemIds.length; j++) {
+        if (items[i].substring(0, 8) == itemIds[j]) {
+          itemIndex[i] = j;
+        }
+      }
+    }
+    return itemIndex;
+  }
 
+  
   /**
    * 获取每个菜品依次的编号
    */
