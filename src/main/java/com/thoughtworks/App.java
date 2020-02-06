@@ -37,7 +37,17 @@ public class App {
     return itemIndex;
   }
 
-  
+  public static int[] getSelectedItemCount(String[] items) {
+    int[] itemCount = new int[items.length];
+    for (int i = 0; i < items.length; i++) {
+      itemCount[i] = Integer.parseInt(items[i].substring(11));
+    }
+    return itemCount;
+  }
+
+
+
+
   /**
    * 获取每个菜品依次的编号
    */
