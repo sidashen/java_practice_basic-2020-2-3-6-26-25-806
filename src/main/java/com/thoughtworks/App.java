@@ -71,6 +71,16 @@ public class App {
     return price;
   }
 
+  public static double[] getSingleTotalPrice(double[] price, int[] itemCount) {
+    double[] singleItemTotal = new double[price.length];
+    for (int i = 0; i < price.length; i++) {
+      singleItemTotal[i] = price[i] * itemCount[i];
+    }
+    return singleItemTotal;
+  }
+
+
+
 
 
 
