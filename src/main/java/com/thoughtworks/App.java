@@ -103,11 +103,46 @@ public class App {
     return selectedHalfPriceItem;
   }
 
+  public static String printReceipt(String[] items, String[] itemName, int[] itemCount, double[] singleItemTotal) {
+    String itemInfo = "";
+    String bonus = "";
+    String receipt = "";
+    double[] totalPriceDiscount = new double[2];
+    double tempPrice = 0;
+    for (int j = 0; j < items.length; j++) {
+      tempPrice += singleItemTotal[j];
+      itemInfo += itemName[j] + " x " + itemCount[j] + " = " + singleItemTotal[j] + "元\n";
+    }
 
+    List selectedHalfPriceItem = getHalfPriceItems(itemName, singleItemTotal);
 
+    if (selectedHalfPriceItem.size() > 0) {
+      for (int i = 0; i < items.length; i++) {
+        totalPriceDiscount[0] += singleItemTotal[i];
+      }
+      totalPriceDiscount[1] = tempPrice - totalPriceDiscount[0];
+      String discountMeal = selectedHalfPriceItem.get(0) + "，" + selectedHalfPriceItem.get(1);
+      bonus = "使用优惠:\n" + "指定菜品半价(" + discountMeal
+        + ")，省" + totalPriceDiscount[1] + "元\n"
+        + "-----------------------------------\n";
+    } else if (tempPrice >= 30) {
+      totalPriceDiscount[0] = tempPrice - 6;
+      bonus = "使用优惠:\n"
+        + "满30减6元，省6元\n"
+        + "-----------------------------------\n";
+    } else {
+      totalPriceDiscount[0] = tempPrice;
+    }
 
+    receipt = "============= 订餐明细 =============\n"
+      + itemInfo
+      + "-----------------------------------\n"
+      + bonus
+      + "总计：" + totalPriceDiscount[0] + "元\n"
+      + "===================================";
 
-
+    return receipt;
+  }
   /**
    * 获取每个菜品依次的编号
    */
