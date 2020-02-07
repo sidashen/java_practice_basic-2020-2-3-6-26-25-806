@@ -125,7 +125,7 @@ public class App {
 
     List selectedHalfPriceItem = getHalfPriceItems(itemName, singleItemTotal);
 
-    if (selectedHalfPriceItem.size() > 0) {
+    if (selectedHalfPriceItem.size() > 1) {
       for (int i = 0; i < items.length; i++) {
         totalPriceDiscount[0] += singleItemTotal[i];
       }
