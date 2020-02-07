@@ -41,7 +41,6 @@ public class App {
         }
       }
     }
-    System.out.println(itemIndex);
     return itemIndex;
   }
 
@@ -87,24 +86,26 @@ public class App {
     return singleItemTotal;
   }
 
-  public static List getHalfPriceItems(String[] itemName, int[] singleItemTotal) {
+  public static ArrayList getHalfPriceItems(String[] itemName, int[] singleItemTotal) {
     String[] halfPriceIds = getHalfPriceIds();
     String[] itemIds = getItemIds();
-    List selectedHalfPriceItem = new ArrayList();
     int[] halfPriceItemIndex = new int[halfPriceIds.length];
-    for (int i = 0; i < itemIds.length; i++) {
-      for (int j = 0; j < halfPriceIds.length; j++) {
-        if (halfPriceIds[j].equals(itemIds[i])) {
-          halfPriceItemIndex[j] = i;
+
+    for (int i = 0; i < halfPriceIds.length; i++) {
+      for (int j = 0; j < itemIds.length; j++) {
+        if (halfPriceIds[i].equals(itemIds[j])) {
+          halfPriceItemIndex[i] = j;
         }
       }
     }
+
     String[] halfPriceItem = getSelectedItemName(halfPriceItemIndex);
+    ArrayList <String> selectedHalfPriceItem = new ArrayList<>();
     for (int i = 0; i < itemName.length; i++) {
       for (int j = 0; j < halfPriceItem.length; j++) {
-        if (itemName[i].equals(halfPriceIds[j])) {
+        if (itemName[i].equals(halfPriceItem[j])) {
           singleItemTotal[i] = singleItemTotal[i] / 2;
-          selectedHalfPriceItem.add(halfPriceItem[j]);
+          selectedHalfPriceItem.add(itemName[i]);
         }
       }
     }
